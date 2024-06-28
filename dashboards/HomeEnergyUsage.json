@@ -94,7 +94,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "(topk(5,(hass_sensor_power_w{friendly_name!~\".*Total.*\"} > 5)))",
+          "expr": "(topk(5,(hass_sensor_power_w{friendly_name!~\".*Total.*|Energy Usage|Always On Usage\"} > 5)))",
           "instant": true,
           "interval": "",
           "legendFormat": "{{friendly_name}}",
@@ -707,7 +707,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "topk(5,sum by (friendly_name) (increase(hass_sensor_energy_kwh{friendly_name!~\".*Total.*|.*Mon.*\"}[7d] )) )",
+          "expr": "topk(5, sum by(friendly_name) (increase(hass_sensor_energy_kwh{friendly_name!~\".*Total.*|.*Mon.*|.*Usage|.*Grid|.*Production\"}[7d])))",
           "instant": true,
           "interval": "",
           "legendFormat": "{{friendly_name}}",
